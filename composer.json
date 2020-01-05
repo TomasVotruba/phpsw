@@ -1,6 +1,6 @@
 {
     "name": "phpsw/website",
-    "description" : "PHP-SW website",
+    "description": "PHP-SW website",
     "type": "project",
     "license": "MIT",
     "require": {
@@ -29,7 +29,8 @@
         "symfony/twig-pack": "*",
         "symfony/validator": "5.0.*",
         "symfony/web-link": "5.0.*",
-        "symfony/yaml": "5.0.*"
+        "symfony/yaml": "5.0.*",
+        "symplify/easy-coding-standard": "^7.1"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
@@ -56,11 +57,6 @@
             "App\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "App\\Tests\\": "tests/"
-        }
-    },
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
@@ -83,16 +79,22 @@
             "@test",
             "@phpstan"
         ],
-        "composer-validate" : "@composer validate --no-check-all --strict",
-        "php-lint" : "parallel-lint src",
-        "twig-lint" : "bin/console lint:twig templates",
-        "yaml-lint" : "bin/console lint:yaml config",
-        "container-lint" : "bin/console lint:container",
-        "db-schema-check" : "bin/console doctrine:schema:validate",
-        "cs" : "php-cs-fixer fix -v --dry-run --verbose",
-        "cs-fix" : "php-cs-fixer fix -v",
-        "test" : "bin/phpunit --log-junit reports/phpunit/junit.xml",
-        "phpstan" : "phpstan analyse --no-progress "
+        "composer-validate": "@composer validate --no-check-all --strict",
+        "php-lint": "parallel-lint src",
+        "twig-lint": "bin/console lint:twig templates",
+        "yaml-lint": "bin/console lint:yaml config",
+        "container-lint": "bin/console lint:container",
+        "db-schema-check": "bin/console doctrine:schema:validate",
+        "cs": [
+            "php-cs-fixer fix -v --dry-run --verbose",
+            "ecs check src"
+        ],
+        "cs-fix": [
+            "php-cs-fixer fix -v",
+            "ecs check src --fix"
+        ],
+        "test": "bin/phpunit --log-junit reports/phpunit/junit.xml",
+        "phpstan": "phpstan analyse --no-progress "
     },
     "extra": {
         "symfony": {

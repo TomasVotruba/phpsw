@@ -1,0 +1,3 @@
+parameters:
+    sets:
+        - 'psr12'
