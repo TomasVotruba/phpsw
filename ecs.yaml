@@ -1,3 +1,6 @@
 parameters:
     sets:
         - 'psr12'
+
+    skip:
+        PhpCsFixer\Fixer\Operator\ConcatSpaceFixer: null

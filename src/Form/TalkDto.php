@@ -101,8 +101,10 @@ class TalkDto
 
             $talk->setTitle($this->title);
         } else {
-            $talk = new Talk($this->title,
-                $this->event);
+            $talk = new Talk(
+                $this->title,
+                $this->event
+            );
         }
 
         $talk->setAbstract($this->abstract);
