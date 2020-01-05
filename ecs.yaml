@@ -6,6 +6,7 @@ parameters:
         - 'clean-code'
         - 'dead-code'
         - 'common'
+        - 'strict'
 
     skip:
         # different from symfony standard
