@@ -1,0 +1,45 @@
+os: linux
+
+language: php
+
+install:
+    - composer update
+
+before_install:
+    # disable xdebug if not coverage
+    - phpenv config-rm xdebug.ini || echo "xdebug not available"
+
+jobs:
+    include:
+        -
+            stage: test
+            name: 'Linting'
+            php: 7.3
+            script:
+                - composer composer-validate
+                - composer php-lint
+                - composer twig-lint
+                - composer yaml-lint
+                - composer container-lint
+                - composer db-schema-check
+
+        -
+            stage: test
+            name: 'Coding Standards'
+            php: 7.3
+            script:
+                - composer cs
+
+        -
+            stage: test
+            name: 'Static Analysis'
+            php: 7.3
+            script:
+                - composer phpstan
+
+cache:
+    directories:
+        - $HOME/.composer/cache
+
+notifications:
+    email: false

@@ -100,7 +100,6 @@
     "db-schema-check" : "bin/console doctrine:schema:validate",
     "cs" : "php-cs-fixer fix -v --dry-run --verbose",
     "cs-fix" : "php-cs-fixer fix -v",
-    "test" : "bin/phpunit --log-junit reports/phpunit/junit.xml",
     "phpstan" : "phpstan analyse --no-progress "
   },
   "conflict": {
