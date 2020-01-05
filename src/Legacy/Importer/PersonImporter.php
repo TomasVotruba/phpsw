@@ -10,10 +10,7 @@ class PersonImporter extends EntityImporter
 {
     public function import(array $entityData, array $importedData): object
     {
-        $person = new Person(
-            $entityData['name'],
-            Person::NORMAL_USER
-        );
+        $person = new Person($entityData['name'], Person::NORMAL_USER);
 
         if (isset($entityData['meetupId'])) {
             $person->setMeetupId((string) $entityData['meetupId']);

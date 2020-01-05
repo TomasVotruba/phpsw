@@ -12,11 +12,11 @@ abstract class EntityImporter
     /**
      * @var ManagerRegistry
      */
-    private $entityManager;
+    private $managerRegistry;
 
-    final public function __construct(ManagerRegistry $entityManager)
+    final public function __construct(ManagerRegistry $managerRegistry)
     {
-        $this->entityManager = $entityManager;
+        $this->managerRegistry = $managerRegistry;
     }
 
     abstract public function import(array $entityData, array $importedData): object;
@@ -36,7 +36,7 @@ abstract class EntityImporter
 
     protected function persist(object $entity): void
     {
-        $manager = $this->entityManager->getManager();
+        $manager = $this->managerRegistry->getManager();
         $manager->persist($entity);
         $manager->flush();
     }
@@ -58,6 +58,6 @@ abstract class EntityImporter
 
     private function getRepository(string $classType): ObjectRepository
     {
-        return $this->entityManager->getRepository($classType);
+        return $this->managerRegistry->getRepository($classType);
     }
 }

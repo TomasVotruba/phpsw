@@ -25,11 +25,8 @@ class TalkImporter extends EntityImporter
 {
     public function import(array $entityData, array $importedData): object
     {
-        $event = $this->lookup(Importer::EVENT, 'event', $entityData, $importedData);
-        $talk = new Talk(
-            $entityData['title'],
-            $event
-        );
+        $event = $this->lookup(ImporterCommand::EVENT, 'event', $entityData, $importedData);
+        $talk = new Talk($entityData['title'], $event);
 
         $talk->setAbstract($entityData['abstract'] ?? null);
         $talk->setJoindinUrl($entityData['joindin-url'] ?? null);
@@ -39,7 +36,7 @@ class TalkImporter extends EntityImporter
 
         $speakers = $entityData['speakers'] ?? [];
         foreach ($speakers as $speaker) {
-            $talk->addSpeaker($this->lookupValue(Importer::PERSON, $speaker, $importedData));
+            $talk->addSpeaker($this->lookupValue(ImporterCommand::PERSON, $speaker, $importedData));
         }
 
         $this->persist($talk);

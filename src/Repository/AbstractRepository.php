@@ -16,11 +16,11 @@ abstract class AbstractRepository
     /**
      * @var ManagerRegistry
      */
-    private $entityManager;
+    private $managerRegistry;
 
-    public function __construct(ManagerRegistry $entityManager)
+    public function __construct(ManagerRegistry $managerRegistry)
     {
-        $this->entityManager = $entityManager;
+        $this->managerRegistry = $managerRegistry;
     }
 
     /**
@@ -45,7 +45,7 @@ abstract class AbstractRepository
 
     protected function getObjectManager(): ObjectManager
     {
-        return $this->entityManager->getManager();
+        return $this->managerRegistry->getManager();
     }
 
     /**
@@ -55,7 +55,7 @@ abstract class AbstractRepository
     {
         $classType = $this->getClassType();
 
-        return $this->entityManager->getRepository($classType);
+        return $this->managerRegistry->getRepository($classType);
     }
 
     /**

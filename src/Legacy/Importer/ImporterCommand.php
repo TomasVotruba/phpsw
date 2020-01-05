@@ -7,33 +7,52 @@ namespace App\Legacy\Importer;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Throwable;
 use Webmozart\Assert\Assert;
 
-class Importer extends Command
+class ImporterCommand extends Command
 {
+    /**
+     * @var string
+     */
     public const VENUE = 'locations';
 
+    /**
+     * @var string
+     */
     public const EVENT = 'events';
 
+    /**
+     * @var string
+     */
     public const PERSON = 'people';
 
+    /**
+     * @var string
+     */
     public const SPONSOR = 'sponsors';
 
+    /**
+     * @var string
+     */
     public const TALK = 'talks';
 
-    protected static $defaultName = 'phpsw:legacy:import';
-
     /**
-     * @var DirectoryReader
+     * @var string
      */
-    private $directoryReader;
+    protected static $defaultName = 'phpsw:legacy:import';
 
     /**
      * @phpstan-var array<string,EntityImporter>
      *
      * @var EntityImporter[]
      */
-    private $importers;
+    private $importers = [];
+
+    /**
+     * @var DirectoryReader
+     */
+    private $directoryReader;
 
     /**
      * Importer constructor.
@@ -73,7 +92,7 @@ class Importer extends Command
                     Assert::isArray($entityData);
                     $entity = $importer->import($entityData, $importedData);
                     $importedData[$directory][$slug] = $entity;
-                } catch (\Throwable $throwable) {
+                } catch (Throwable $throwable) {
                     $output->writeln("${directory}, ${slug}");
                     $output->writeln($throwable->getMessage());
 

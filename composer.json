@@ -84,8 +84,8 @@
         "yaml-lint": "bin/console lint:yaml config",
         "container-lint": "bin/console lint:container",
         "db-schema-check": "bin/console doctrine:schema:validate",
-        "cs": "ecs check src --debug",
-        "cs-fix": "ecs check src --fix --debug",
+        "cs": "ecs check src",
+        "cs-fix": "ecs check src --fix",
         "test": "bin/phpunit --log-junit reports/phpunit/junit.xml",
         "phpstan": "phpstan analyse --no-progress "
     },

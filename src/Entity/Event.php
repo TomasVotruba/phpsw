@@ -37,12 +37,6 @@ class Event
     private $meetupId;
 
     /**
-     * @var DateTimeImmutable
-     * @ORM\Column(type="datetime_immutable")
-     */
-    private $date;
-
-    /**
      * @var string
      * @ORM\Column(type="string", length=255)
      */
@@ -53,6 +47,12 @@ class Event
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
+
+    /**
+     * @var DateTimeImmutable
+     * @ORM\Column(type="datetime_immutable")
+     */
+    private $date;
 
     /**
      * @var Venue|null
@@ -166,9 +166,9 @@ class Event
         return $this->pub;
     }
 
-    public function setPub(?Venue $pub): self
+    public function setPub(?Venue $venue): self
     {
-        $this->pub = $pub;
+        $this->pub = $venue;
 
         return $this;
     }
@@ -181,19 +181,19 @@ class Event
         return $this->organisers;
     }
 
-    public function addOrganiser(Person $organiser): self
+    public function addOrganiser(Person $person): self
     {
-        if (!$this->organisers->contains($organiser)) {
-            $this->organisers[] = $organiser;
+        if (!$this->organisers->contains($person)) {
+            $this->organisers[] = $person;
         }
 
         return $this;
     }
 
-    public function removeOrganiser(Person $organiser): self
+    public function removeOrganiser(Person $person): self
     {
-        if ($this->organisers->contains($organiser)) {
-            $this->organisers->removeElement($organiser);
+        if ($this->organisers->contains($person)) {
+            $this->organisers->removeElement($person);
         }
 
         return $this;

@@ -16,17 +16,25 @@ class Person
 {
     use SluggerTrait;
 
+    /**
+     * @var string
+     */
     public const ORGANISER_USER = 'organiser';
 
+    /**
+     * @var string
+     */
     public const HELPER_USER = 'helper';
 
+    /**
+     * @var string
+     */
     public const NORMAL_USER = 'normal';
 
-    public const USER_TYPES = [
-        self::NORMAL_USER,
-        self::HELPER_USER,
-        self::ORGANISER_USER,
-    ];
+    /**
+     * @var string[]
+     */
+    public const USER_TYPES = [self::NORMAL_USER, self::HELPER_USER, self::ORGANISER_USER];
 
     /**
      * @var int

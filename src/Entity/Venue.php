@@ -16,14 +16,20 @@ class Venue
 {
     use SluggerTrait;
 
+    /**
+     * @var string
+     */
     public const TALK_VENUE = 'talk';
 
+    /**
+     * @var string
+     */
     public const PUB_VENUE = 'pub';
 
-    public const VALID_VENUE_TYPES = [
-        self::TALK_VENUE,
-        self::PUB_VENUE,
-    ];
+    /**
+     * @var string[]
+     */
+    public const VALID_VENUE_TYPES = [self::TALK_VENUE, self::PUB_VENUE];
 
     /**
      * @var int
@@ -184,23 +190,23 @@ class Venue
         return $this->pubs;
     }
 
-    public function addPub(Event $pub): self
+    public function addPub(Event $event): self
     {
-        if (!$this->pubs->contains($pub)) {
-            $this->pubs[] = $pub;
-            $pub->setVenue($this);
+        if (!$this->pubs->contains($event)) {
+            $this->pubs[] = $event;
+            $event->setVenue($this);
         }
 
         return $this;
     }
 
-    public function removePub(Event $pub): self
+    public function removePub(Event $event): self
     {
-        if ($this->pubs->contains($pub)) {
-            $this->pubs->removeElement($pub);
+        if ($this->pubs->contains($event)) {
+            $this->pubs->removeElement($event);
             // set the owning side to null (unless already changed)
-            if ($pub->getVenue() === $this) {
-                $pub->setVenue(null);
+            if ($event->getVenue() === $this) {
+                $event->setVenue(null);
             }
         }
 

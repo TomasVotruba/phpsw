@@ -16,14 +16,20 @@ class Sponsor
 {
     use SluggerTrait;
 
+    /**
+     * @var string
+     */
     public const FULL = 'full';
 
+    /**
+     * @var string
+     */
     public const VENUE = 'venue';
 
-    public const SPONSOR_TYPES = [
-        self::FULL,
-        self::VENUE,
-    ];
+    /**
+     * @var string[]
+     */
+    public const SPONSOR_TYPES = [self::FULL, self::VENUE];
 
     /**
      * @var int
@@ -53,7 +59,7 @@ class Sponsor
      *
      * @ORM\Column(type="boolean")
      */
-    private $currentSponsor;
+    private $currentSponsor = false;
 
     /**
      * @var string

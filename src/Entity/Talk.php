@@ -42,13 +42,6 @@ class Talk
     private $abstract;
 
     /**
-     * @var Event
-     * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="talks")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $event;
-
-    /**
      * @var string|null
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -73,16 +66,23 @@ class Talk
     private $videoUrl;
 
     /**
+     * @var bool
+     * @ORM\Column(type="boolean")
+     */
+    private $showcase = false;
+
+    /**
+     * @var Event
+     * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="talks")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $event;
+
+    /**
      * @var Collection<int,Person>
      * @ORM\ManyToMany(targetEntity="App\Entity\Person", inversedBy="talks")
      */
     private $speakers;
-
-    /**
-     * @var bool
-     * @ORM\Column(type="boolean")
-     */
-    private $showcase;
 
     public function __construct(string $title, Event $event)
     {
@@ -183,19 +183,19 @@ class Talk
         return $this->speakers;
     }
 
-    public function addSpeaker(Person $speaker): self
+    public function addSpeaker(Person $person): self
     {
-        if (!$this->speakers->contains($speaker)) {
-            $this->speakers[] = $speaker;
+        if (!$this->speakers->contains($person)) {
+            $this->speakers[] = $person;
         }
 
         return $this;
     }
 
-    public function removeSpeaker(Person $speaker): self
+    public function removeSpeaker(Person $person): self
     {
-        if ($this->speakers->contains($speaker)) {
-            $this->speakers->removeElement($speaker);
+        if ($this->speakers->contains($person)) {
+            $this->speakers->removeElement($person);
         }
 
         return $this;

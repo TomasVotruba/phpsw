@@ -53,7 +53,7 @@ class TalkDto
     /**
      * @var bool
      */
-    public $showcase;
+    public $showcase = false;
 
     /**
      * @var Talk|null
@@ -101,10 +101,7 @@ class TalkDto
 
             $talk->setTitle($this->title);
         } else {
-            $talk = new Talk(
-                $this->title,
-                $this->event
-            );
+            $talk = new Talk($this->title, $this->event);
         }
 
         $talk->setAbstract($this->abstract);

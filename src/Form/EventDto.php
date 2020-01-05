@@ -20,12 +20,6 @@ class EventDto
     public $title;
 
     /**
-     * @var DateTimeImmutable|null
-     * @Constraints\NotBlank()
-     */
-    public $date;
-
-    /**
      * @var string|null
      */
     public $description;
@@ -35,6 +29,12 @@ class EventDto
      * @Constraints\Length(max="255")
      */
     public $meetupId;
+
+    /**
+     * @var DateTimeImmutable|null
+     * @Constraints\NotBlank()
+     */
+    public $date;
 
     /**
      * @var Venue|null

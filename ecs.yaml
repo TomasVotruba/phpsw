@@ -8,9 +8,22 @@ parameters:
         - 'common'
         - 'strict'
         - 'symfony'
+        - 'symplify'
+
+    exclude_files:
+        - 'src/Migrations/*'
 
     skip:
         # different from symfony standard
         PhpCsFixer\Fixer\Operator\ConcatSpaceFixer: null
         PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer: null
         PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer: null
+        # fails for generics
+        Symplify\CodingStandard\Sniffs\Commenting\AnnotationTypeExistsSniff: null
+        Symplify\CodingStandard\Sniffs\Debug\CommentedOutCodeSniff.Found: null
+        Symplify\CodingStandard\Sniffs\ControlStructure\SprintfOverContactSniff: null
+        # explicit naming
+        Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff: null
+        Symplify\CodingStandard\Sniffs\Naming\InterfaceNameSniff: null
+        Symplify\CodingStandard\Sniffs\CleanCode\ForbiddenStaticFunctionSniff:
+            - '*Dto.php'

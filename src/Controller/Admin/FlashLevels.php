@@ -9,7 +9,13 @@ namespace App\Controller\Admin;
  */
 interface FlashLevels
 {
+    /**
+     * @var string
+     */
     public const SUCCESS = 'success';
 
+    /**
+     * @var string
+     */
     public const DANGER = 'danger';
 }
