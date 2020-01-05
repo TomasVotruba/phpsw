@@ -12,16 +12,6 @@ use Webmozart\Assert\Assert;
 class TalkDto
 {
     /**
-     * @var Talk|null
-     */
-    private $talk = null;
-
-    /**
-     * @var Event
-     */
-    private $event;
-
-    /**
      * @var string|null
      * @Constraints\NotBlank()
      * @Constraints\Length(max="255")
@@ -65,6 +55,22 @@ class TalkDto
      */
     public $showcase;
 
+    /**
+     * @var Talk|null
+     */
+    private $talk = null;
+
+    /**
+     * @var Event
+     */
+    private $event;
+
+    private function __construct(Event $event)
+    {
+        $this->event = $event;
+        $this->showcase = false;
+    }
+
     public static function newInstance(Event $event): self
     {
         return new self($event);
@@ -82,13 +88,7 @@ class TalkDto
         $talkDto->videoUrl = $talk->getVideoUrl();
         $talkDto->showcase = $talk->isShowcase();
 
-        return$talkDto;
-    }
-
-    private function __construct(Event $event)
-    {
-        $this->event = $event;
-        $this->showcase = false;
+        return $talkDto;
     }
 
     public function asTalk(): Talk

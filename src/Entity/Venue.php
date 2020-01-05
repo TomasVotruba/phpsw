@@ -17,7 +17,9 @@ class Venue
     use SluggerTrait;
 
     public const TALK_VENUE = 'talk';
+
     public const PUB_VENUE = 'pub';
+
     public const VALID_VENUE_TYPES = [
         self::TALK_VENUE,
         self::PUB_VENUE,

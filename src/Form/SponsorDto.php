@@ -11,11 +11,6 @@ use Webmozart\Assert\Assert;
 class SponsorDto
 {
     /**
-     * @var Sponsor|null
-     */
-    private $sponsor = null;
-
-    /**
      * @var string|null
      * @Constraints\NotBlank()
      * @Constraints\Length(max="255")
@@ -53,6 +48,11 @@ class SponsorDto
      * @Constraints\Length(max="255")
      */
     public $sponsorType;
+
+    /**
+     * @var Sponsor|null
+     */
+    private $sponsor = null;
 
     public static function newInstance(): self
     {

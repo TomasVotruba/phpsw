@@ -19,7 +19,7 @@ class DirectoryReader
      */
     public function getFileNameMappings(string $directory): array
     {
-        return $this->getDirectoryContentsRecursively(__DIR__."/../../../data/$directory");
+        return $this->getDirectoryContentsRecursively(__DIR__."/../../../data/${directory}");
     }
 
     private function getDirectoryContentsRecursively(string $directory): array
@@ -28,9 +28,9 @@ class DirectoryReader
 
         $return = [];
         foreach ($files as $file) {
-            $fullPath = "$directory/$file";
+            $fullPath = "${directory}/${file}";
 
-            if (is_dir("$directory/$file") && (!in_array($file, ['.', '..']))) {
+            if (is_dir("${directory}/${file}") && (!in_array($file, ['.', '..'], true))) {
                 $return = array_merge($return, $this->getDirectoryContentsRecursively($fullPath));
             } elseif ('.json' === substr($file, -5)) {
                 $entityName = substr($file, 0, -5);

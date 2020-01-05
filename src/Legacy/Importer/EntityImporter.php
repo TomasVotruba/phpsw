@@ -19,6 +19,8 @@ abstract class EntityImporter
         $this->entityManager = $entityManager;
     }
 
+    abstract public function import(array $entityData, array $importedData): object;
+
     final protected function persistIfNew(string $type, object $entity, string $fieldName, $value)
     {
         $repository = $this->getRepository($type);
@@ -39,13 +41,6 @@ abstract class EntityImporter
         $manager->flush();
     }
 
-    private function getRepository(string $classType): ObjectRepository
-    {
-        return $this->entityManager->getRepository($classType);
-    }
-
-    abstract public function import(array $entityData, array $importedData): object;
-
     protected function lookup(string $type, string $key, array $entityData, array $importedData)
     {
         $slug = $entityData[$key] ?? '';
@@ -59,5 +54,10 @@ abstract class EntityImporter
     protected function lookupValue(string $type, string $slug, array $importedData)
     {
         return $importedData[$type][$slug];
+    }
+
+    private function getRepository(string $classType): ObjectRepository
+    {
+        return $this->entityManager->getRepository($classType);
     }
 }

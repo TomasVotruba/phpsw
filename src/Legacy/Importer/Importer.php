@@ -12,9 +12,13 @@ use Webmozart\Assert\Assert;
 class Importer extends Command
 {
     public const VENUE = 'locations';
+
     public const EVENT = 'events';
+
     public const PERSON = 'people';
+
     public const SPONSOR = 'sponsors';
+
     public const TALK = 'talks';
 
     protected static $defaultName = 'phpsw:legacy:import';
@@ -70,7 +74,7 @@ class Importer extends Command
                     $entity = $importer->import($entityData, $importedData);
                     $importedData[$directory][$slug] = $entity;
                 } catch (\Throwable $throwable) {
-                    $output->writeln("$directory, $slug");
+                    $output->writeln("${directory}, ${slug}");
                     $output->writeln($throwable->getMessage());
 
                     return 1;

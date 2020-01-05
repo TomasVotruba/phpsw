@@ -17,8 +17,11 @@ class Person
     use SluggerTrait;
 
     public const ORGANISER_USER = 'organiser';
+
     public const HELPER_USER = 'helper';
+
     public const NORMAL_USER = 'normal';
+
     public const USER_TYPES = [
         self::NORMAL_USER,
         self::HELPER_USER,

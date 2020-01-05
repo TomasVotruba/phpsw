@@ -11,11 +11,6 @@ use Webmozart\Assert\Assert;
 class VenueDto
 {
     /**
-     * @var Venue|null
-     */
-    private $venue = null;
-
-    /**
      * @var string|null
      * @Constraints\NotBlank()
      * @Constraints\Length(max="255")
@@ -57,6 +52,11 @@ class VenueDto
      */
     public $type;
 
+    /**
+     * @var Venue|null
+     */
+    private $venue = null;
+
     public static function newInstance(): self
     {
         return new self();
@@ -73,7 +73,7 @@ class VenueDto
         $venueDto->type = $venue->getType();
         $venueDto->website = $venue->getWebsite();
 
-        return$venueDto;
+        return $venueDto;
     }
 
     public function asVenue(): Venue

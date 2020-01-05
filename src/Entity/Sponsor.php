@@ -17,6 +17,7 @@ class Sponsor
     use SluggerTrait;
 
     public const FULL = 'full';
+
     public const VENUE = 'venue';
 
     public const SPONSOR_TYPES = [

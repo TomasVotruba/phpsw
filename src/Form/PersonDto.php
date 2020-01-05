@@ -11,11 +11,6 @@ use Webmozart\Assert\Assert;
 class PersonDto
 {
     /**
-     * @var Person|null
-     */
-    private $person = null;
-
-    /**
      * @var string|null
      * @Constraints\NotBlank()
      * @Constraints\Length(max="255")
@@ -85,6 +80,11 @@ class PersonDto
      */
     public $mobileNumber;
 
+    /**
+     * @var Person|null
+     */
+    private $person = null;
+
     public static function newInstance(): self
     {
         return new self();
@@ -106,7 +106,7 @@ class PersonDto
         $personDto->email = $person->getEmail();
         $personDto->mobileNumber = $person->getMobileNumber();
 
-        return$personDto;
+        return $personDto;
     }
 
     public function asPerson(): Person

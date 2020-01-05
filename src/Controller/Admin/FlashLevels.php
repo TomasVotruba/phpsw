@@ -10,5 +10,6 @@ namespace App\Controller\Admin;
 interface FlashLevels
 {
     public const SUCCESS = 'success';
+
     public const DANGER = 'danger';
 }

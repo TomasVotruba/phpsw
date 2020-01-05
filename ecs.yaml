@@ -3,6 +3,12 @@ parameters:
         - 'psr12'
         - 'php70'
         - 'php71'
+        - 'clean-code'
+        - 'dead-code'
+        - 'common'
 
     skip:
+        # different from symfony standard
         PhpCsFixer\Fixer\Operator\ConcatSpaceFixer: null
+        PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer: null
+        PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer: null

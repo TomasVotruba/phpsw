@@ -13,11 +13,6 @@ use Webmozart\Assert\Assert;
 class EventDto
 {
     /**
-     * @var Event|null
-     */
-    private $event = null;
-
-    /**
      * @var string|null
      * @Constraints\NotBlank()
      * @Constraints\Length(max="255")
@@ -51,6 +46,11 @@ class EventDto
      */
     public $pub;
 
+    /**
+     * @var Event|null
+     */
+    private $event = null;
+
     public static function newInstance(): self
     {
         return new self();
@@ -67,7 +67,7 @@ class EventDto
         $eventDto->venue = $event->getVenue();
         $eventDto->pub = $event->getPub();
 
-        return$eventDto;
+        return $eventDto;
     }
 
     public function asEvent(): Event
