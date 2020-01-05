@@ -33,7 +33,6 @@
         "symplify/easy-coding-standard": "^7.1"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.16",
         "jakub-onderka/php-parallel-lint": "^1.0",
         "phpstan/extension-installer": "^1.0",
         "phpstan/phpstan": "^0.12.3",
@@ -85,14 +84,8 @@
         "yaml-lint": "bin/console lint:yaml config",
         "container-lint": "bin/console lint:container",
         "db-schema-check": "bin/console doctrine:schema:validate",
-        "cs": [
-            "php-cs-fixer fix -v --dry-run --verbose",
-            "ecs check src"
-        ],
-        "cs-fix": [
-            "php-cs-fixer fix -v",
-            "ecs check src --fix"
-        ],
+        "cs": "ecs check src --debug",
+        "cs-fix": "ecs check src --fix --debug",
         "test": "bin/phpunit --log-junit reports/phpunit/junit.xml",
         "phpstan": "phpstan analyse --no-progress "
     },
