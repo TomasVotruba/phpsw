@@ -10,9 +10,6 @@ parameters:
         - 'symfony'
         - 'symplify'
 
-    exclude_files:
-        - 'src/Migrations/*'
-
     skip:
         # different from symfony standard
         PhpCsFixer\Fixer\Operator\ConcatSpaceFixer: null
